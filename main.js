@@ -6,6 +6,33 @@
 
 $( document ).ready(function() {
 
+    $(".block").click(function() {
 
+        var clicked = $(this);
 
+        $.ajax({
+            url: "https://flynn.boolean.careers/exercises/api/random/int",
+            method: "GET",
+            success: function (data){
+                    console.log("hey è andata tutto bene!");
+                    console.log(data);
+                    
+                    clicked.text(data.response)
+
+                    if (data.response <= 5) {
+                        clicked.css("background", "yellow");
+                        
+                        
+                    } else {
+                        clicked.css("background", "green");
+                        
+                    }
+            },
+            error: function (stato){
+                    console.log("c'è stato un errore: " + stato);       
+            }
+
+    });
+
+    });
 });
