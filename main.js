@@ -6,6 +6,7 @@
 
 $(document).ready(function () {
 
+    // al click sul blocco...
     $(".block").click(function () {
 
         var clicked = $(this);
@@ -17,16 +18,19 @@ $(document).ready(function () {
                 console.log("hey è andata tutto bene!");
                 console.log(data);
 
+                // inserisco dentro il blocco cliccato il risultato dell'API
                 clicked.text(data.response);
 
+                // se il risultato è minore o uguale a 5 coloro il blocco di giallo
                 if (data.response <= 5) {
                     clicked.css("background", "yellow");
-                    clicked.text(data.response);
 
+                // altrimenti lo coloro di verde
                 } else {
                     clicked.css("background", "green");
-                    clicked.text(data.response);
                 }
+
+                // spengo la possibilità di cliccare sul blocco
                 clicked.off("click");
             },
             error: function (stato) {
