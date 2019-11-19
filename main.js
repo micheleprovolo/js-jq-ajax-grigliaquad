@@ -4,7 +4,7 @@
 // se è > di 5 il quadrato diventa verde.
 // Il numero ottenuto appare al centro del quadrato
 
-$( document ).ready(function() {
+$(document).ready(function() {
 
     $(".block").click(function() {
 
@@ -16,16 +16,22 @@ $( document ).ready(function() {
             success: function (data){
                     console.log("hey è andata tutto bene!");
                     console.log(data);
-                    
-                    clicked.text(data.response)
 
-                    if (data.response <= 5) {
+                    clicked.text(data.response);
+
+                    if (data.response <= 5 && !clicked.hasClass("active")) {
                         clicked.css("background", "yellow");
+                        clicked.text(data.response);
+                        clicked.addClass("active");
                         
-                        
-                    } else {
+                    } else if (data.response > 5 && !clicked.hasClass("active")) {
                         clicked.css("background", "green");
-                        
+                        clicked.text(data.response);
+                        clicked.addClass("active");
+                    }
+                    
+                    else {
+                        alert("casella già cliccata!")
                     }
             },
             error: function (stato){

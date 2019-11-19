@@ -18,3 +18,8 @@
     width: 70px;
     height: 70px;
 }
+
+.active {
+    text-align: center;
+    line-height: 70px;
+}
